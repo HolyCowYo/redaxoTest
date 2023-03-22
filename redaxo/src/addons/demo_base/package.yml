@@ -1,0 +1,40 @@
+package: demo_base
+version: 3.0.1
+author: 'Friends Of REDAXO'
+supportpage: 'https://github.com/FriendsOfREDAXO/demo_base'
+page:
+    title: 'translate:demo_base_title'
+    perm: 'demo_base[]'
+    pjax: true
+    subpages:
+        install: { title: 'translate:title' }
+requires:
+    packages:
+        backup: ^2.3.0
+        structure/content: ^2.7.0
+        markitup: ^3.7.1
+        phpmailer: ^2.5.1
+        redactor: ^2.3.0
+        sprog: ^1.3.0
+        yform: ^4.0.0
+    redaxo: ^5.9.0
+console_commands:
+    'demo_base:install': rex_command_demo_base_install
+setup:
+    packages:
+        markitup: 4525
+        redactor: 3841
+        sprog: 4496
+        yform: 4547
+    installSequence:
+        - backup
+        - structure/content
+        - phpmailer
+        - markitup
+        - redactor
+        - sprog
+        - yform
+    dbimport:
+        - demo_base.utf8.sql
+    fileimport:
+        - demo_base.tar.gz
